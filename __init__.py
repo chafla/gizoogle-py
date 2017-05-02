@@ -1,0 +1,1 @@
+from gizoogle import translate_string, translate_site
