@@ -18,13 +18,13 @@ def translate_string(text):
     soup = bs4.BeautifulSoup(soup_input, "lxml")
     giz = soup.find_all(text=True)
     giz_text = giz[39]  # Hacky, but consistent.
-    giz_text.strip("\n")
+    giz_text = giz_text.strip("\n")
     return giz_text
 
 
 def translate_site(dest_url):
     params = {"search": dest_url}
-    return "http://www.gizoogle.net/tranzizzle.php?%s" % parse.urlencode(params)
+    return "http://www.gizoogle.net/tranzizzle.php?{}".format(parse.urlencode(params))
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Make some text a bit more gangster.")
@@ -33,7 +33,7 @@ if __name__ == "__main__":
 
     args = parser.parse_args()
 
-    if hasattr(args, "text"):
+    if args.text is not None:
         print(translate_string(args.text))
-    elif hasattr(args, "link"):
+    elif args.link is not None:
         print(translate_site(args.link))
