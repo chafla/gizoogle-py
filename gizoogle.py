@@ -17,8 +17,7 @@ def translate_string(text):
     soup_input = re.sub("/name=translatetext[^>]*>/", 'name="translatetext" >', resp.text)
     soup = bs4.BeautifulSoup(soup_input, "lxml")
     giz = soup.find_all(text=True)
-    giz_text = giz[39]  # Hacky, but consistent.
-    giz_text = giz_text.strip("\r\n")
+    giz_text = giz[39].strip("\r\n")  # Hacky, but consistent.
     return giz_text
 
 
@@ -28,8 +27,8 @@ def translate_site(dest_url):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Make some text a bit more gangster.")
-    parser.add_argument("--text", "-t", help="Process text through textilizer.")
-    parser.add_argument("--link", "-l", help="Gizoogle a website.")
+    parser.add_argument("-t", "--text", help="Process text through textilizer.")
+    parser.add_argument("-l", "--link", help="Gizoogle a website.")
 
     args = parser.parse_args()
 
@@ -37,3 +36,5 @@ if __name__ == "__main__":
         print(translate_string(args.text))
     elif args.link is not None:
         print(translate_site(args.link))
+    else:
+        parser.print_help()
