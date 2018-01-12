@@ -1,1 +1,1 @@
-from gizoogle import translate_string, translate_site
+from gizoogle import text, link

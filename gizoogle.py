@@ -9,10 +9,10 @@ import requests
 import argparse
 
 
-def translate_string(text):
-    params = {"translatetext": text}
-    url = "http://www.gizoogle.net/textilizer.php"
-    resp = requests.post(url, data=params)
+def text(input_text: str) -> str:
+    params = {"translatetext": input_text}
+    target_url = "http://www.gizoogle.net/textilizer.php"
+    resp = requests.post(target_url, data=params)
     # the html returned is in poor form normally.
     soup_input = re.sub("/name=translatetext[^>]*>/", 'name="translatetext" >', resp.text)
     soup = bs4.BeautifulSoup(soup_input, "lxml")
@@ -21,7 +21,7 @@ def translate_string(text):
     return giz_text
 
 
-def translate_site(dest_url):
+def link(dest_url: str) -> str:
     params = {"search": dest_url}
     return "http://www.gizoogle.net/tranzizzle.php?{}".format(parse.urlencode(params))
 
@@ -34,8 +34,8 @@ if __name__ == "__main__":
     args = parser.parse_args()
 
     if args.text is not None:
-        print(translate_string(args.text))
+        print(text(args.text))
     elif args.link is not None:
-        print(translate_site(args.link))
+        print(link(args.link))
     else:
         parser.print_help()

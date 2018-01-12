@@ -12,13 +12,13 @@ Requires bs4, requests, and lxml.
 
 gizoogle-py can be installed through pip:
 
-```bash
-$ pip install gizoogle-py
+```sh
+$ pip install gizoogle_py
 ```
 
 ## Usage
 
-```
+```sh
 $ python -m gizoogle -t "hello world"
 wassup ghetto
 $ python -m gizoogle -l "http://reddit.com"
