@@ -12,7 +12,7 @@ with open('requirements.txt') as f:
     requirements = f.read().splitlines()
 
 setup(
-    name="gizoogle-py",
+    name="gizoogle_py",
     version="0.1.3",
     description="Python wrapper for gizoogle and textilizer.",
     url="https://github.com/chafla/gizoogle-py",

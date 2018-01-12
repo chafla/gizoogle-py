@@ -25,6 +25,7 @@ def translate_site(dest_url):
     params = {"search": dest_url}
     return "http://www.gizoogle.net/tranzizzle.php?{}".format(parse.urlencode(params))
 
+
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Make some text a bit more gangster.")
     parser.add_argument("-t", "--text", help="Process text through textilizer.")
