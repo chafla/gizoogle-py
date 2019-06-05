@@ -17,7 +17,7 @@ def text(input_text: str) -> str:
     soup_input = re.sub("/name=translatetext[^>]*>/", 'name="translatetext" >', resp.text)
     soup = bs4.BeautifulSoup(soup_input, "lxml")
     giz = soup.find_all(text=True)
-    giz_text = giz[39].strip("\r\n")  # Hacky, but consistent.
+    giz_text = giz[37].strip("\r\n")  # Hacky, but consistent.
     return giz_text
 
 

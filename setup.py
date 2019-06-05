@@ -13,7 +13,7 @@ with open('requirements.txt') as f:
 
 setup(
     name="gizoogle_py",
-    version="1.0.0",
+    version="1.0.1",
     description="Python wrapper for gizoogle and textilizer.",
     url="https://github.com/chafla/gizoogle-py",
     author="chafla",
